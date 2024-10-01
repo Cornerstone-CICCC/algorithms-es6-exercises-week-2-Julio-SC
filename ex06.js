@@ -20,8 +20,32 @@ Note: There may be multiple available spots for a particular vehicle. It does no
 */
 
 const whereCanIPark = function (spots, vehicle) {
-  // Code here!
-};
+  
+  let parkingSpot = false;
+
+  const parkingRules = {
+    regular: ["R"],
+    small: ["R", "S"],
+    motorcycle: ["R", "S", "M"]
+  };
+  
+  spots.forEach((row, y) => {
+    if (parkingSpot) return; // Si encontramos el lugar adecuado, detenemos la iteración
+    
+    // Recorremos cada espacio en la fila
+    row.forEach((spot, x) => {
+      if (parkingSpot) return; // Detenemos la iteración si ya encontramos un lugar
+      
+      // Comprobar si el espacio cumple con las reglas del vehículo y está disponible (en mayúsculas)
+      if (parkingRules[vehicle].includes(spot.toUpperCase()) && spot === spot.toUpperCase()) {
+        parkingSpot = [x, y]; // Guardamos las coordenadas del lugar disponible
+      }
+    });
+  });
+  
+  return parkingSpot;
+
+}
 
 console.log(
   whereCanIPark(
