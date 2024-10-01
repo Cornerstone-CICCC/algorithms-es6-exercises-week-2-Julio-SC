@@ -18,6 +18,21 @@ Use some sort of looping. Do Not use String.prototype.replace
 */
 
 const urlEncode = function (text) {
+  
+  const trimmedText = text.trim();
+
+  let encodedString = "";
+
+  trimmedText.split("").forEach(char =>{
+    if (char === " ") {
+      encodedString += "20%";
+
+    } else
+    encodedString += char;
+  })
+  
+return encodedString;
+
   // Put your solution here
 };
 
