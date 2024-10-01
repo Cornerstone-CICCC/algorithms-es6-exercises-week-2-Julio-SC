@@ -9,6 +9,14 @@ Create a function named organizeInstructors that will receive an array of instru
 */
 
 const organizeInstructors = function (instructors) {
+
+  return instructors.reduce((organized, instructor) => {
+    organized[instructor.course] = organized[instructor.course] || [];
+    organized[instructor.course].push(instructor.name);
+    return organized
+  },{}) 
+
+  
   // Put your solution here
 };
 
