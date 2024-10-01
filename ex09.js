@@ -9,6 +9,16 @@ Create a function named camelCase that will convert a string to camel case, and 
 */
 
 const camelCase = function (input) {
+  
+    const words = input.split(' ');
+  
+    for (let i = 1; i < words.length; i++) {
+  
+      words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+    }
+    return words.join('');
+  
+  
   // Your code here
 };
 
